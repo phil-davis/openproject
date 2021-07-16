@@ -27,7 +27,7 @@
 //++
 
 import {
-  Component, Injector, OnDestroy, OnInit,
+  Component
 } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { StateService } from '@uirouter/core';
@@ -53,7 +53,7 @@ export class RefreshButtonComponent {
     readonly state:StateService) {
   }
 
-  refresh() {
-    this.state.go('.', {}, { reload: true });
+  refresh():void {
+    void this.state.go('.', {}, { reload: true });
   }
 }

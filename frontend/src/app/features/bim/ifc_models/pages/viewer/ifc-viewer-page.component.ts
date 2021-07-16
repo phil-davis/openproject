@@ -61,7 +61,7 @@ export class IFCViewerPageComponent extends PartitionedQuerySpacePageComponent {
     },
     {
       component: RefreshButtonComponent,
-      show: () => !this.viewerBridgeService.shouldShowViewer
+      show: () => !this.viewerBridgeService.shouldShowViewer,
     },
     {
       component: BcfImportButtonComponent,
