@@ -33,6 +33,7 @@ import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { InjectField } from 'core-app/shared/helpers/angular/inject-field.decorator';
 import { HalLinkInterface } from 'core-app/features/hal/hal-link/hal-link';
 import { ICKEditorContext } from 'core-app/shared/components/editor/components/ckeditor/ckeditor.types';
+import idFromLink from 'core-app/features/hal/helpers/id-from-link';
 
 export interface HalResourceClass<T extends HalResource = HalResource> {
   new(injector:Injector,
@@ -112,10 +113,6 @@ export class HalResource {
 
   public _name:string;
 
-  public static idFromLink(href:string):string {
-    return href.split('/').pop()!;
-  }
-
   public $initialize(source:any) {
     this.$source = source.$source || source;
     this.halInitializer(this);
@@ -143,7 +140,7 @@ export class HalResource {
       return this.$source.id.toString();
     }
 
-    const id = this.idFromLink;
+    const id = idFromLink(this.href);
     if (/^\d+$/.exec(id)) {
       return id;
     }
